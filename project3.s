@@ -73,4 +73,12 @@ sub_a:
 	syscall                                 # -> make a system call
 	
 	li $v0, 4                               # -> set up to print a string char
+	la $a0, closing_char                          # -> load the closing parenthesis char
+	syscall                                 # -> make a system call
+	
+	j checking_pos                      # -> jump to "checking_pos"
+	
+	checking_pos:
+	lw $t9, 4($sp)                          # -> load word from the 4th offset from the current stack pointer into $t9
+	addi $sp, $sp, 8                        # -> free up 8 bytes of storage from the running stack
 
