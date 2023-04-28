@@ -42,4 +42,13 @@ sub_a:
 	beq $t7, 10, Send_to_sub_b              # -> branch to "Send_to_sub_b" if vallue in $t7 == 10
 	beq $t7, 0, Send_to_sub_b               # -> branch to "Send_to_sub_b" if value in $t7 == 0
 	addi $t1, $t1, 1                        # -> otherwise increment $t1 by 1
+	j LoopSub                               # -> and jump to LoopSub
+
+	Send_to_sub_b:                      
+	sw $t1, 4($sp)                          # -> save the word in $t1 into the runtime stack for 4 bytes offset
+	
+	jal sub_b                               # -> jump and link to sub_b
+	
+	lw $t8, ($sp)                           # -> load word from the address of the current stack pointer into $t8
+	beq $t8, -1, print_error_msg            # -> branch to "print_error_msg" if val of $t8 == -1
 
