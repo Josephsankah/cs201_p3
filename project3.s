@@ -23,4 +23,6 @@ main:
 	sw $t1, ($sp)                    # -> save/push the value of $t1 into the first byte address on top of the running stack
 	jal sub_a                        # ->  jump and link to sub_a, to process the whole input string
 
+Exit:	li $v0, 10                    # -> setup to exit the program
+	syscall                           # -> system call to exit
 
