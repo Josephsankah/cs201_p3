@@ -153,6 +153,15 @@ sub_b:
 	
 	Loop_Trailing:
 	lb $t4, ($t2)				              # -> loading the subsequent bit to $t4
-	beq $t4, $t0, For_Valid			# -> branch to For_valid if val in $t4 == val in $t0
+	beq $t4, $t0, For_Valid			          # -> branch to For_valid if val in $t4 == val in $t0
+	bne $t4, 32, TabT			              # -> check if a trailing space found
+	j SkipT					                  # -> continue loop
+	
+	TabT:	bne $t4, 9, For_Invalid		          # -> check if a trailing tab found
+	
+	SkipT:	addi $t2, $t2, 1		          # -> go to the next byte address
+		j Loop_Trailing			              # -> loop again
+	
+
 
 
