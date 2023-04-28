@@ -96,4 +96,13 @@ sub_a:
 	syscall                                 # -> make a system call
 	
 	j Loop                                  # -> jump to Loop
+	
+	end:
+	la $ra, 0($t6)                          # -> load the return address into $ra
+	jr $ra                                  # -> jump to return address
+
+sub_b:	
+	li $t5, 0                               # -> initialize the vals of $t5, $t3 and $t8 to 0
+	li $t3, 0
+	li $t8, 0
 
