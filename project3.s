@@ -113,4 +113,10 @@ sub_b:
 	
 	LoopLeading:
 	lb $t4, ($t2)                           # -> load byte from $t2 into $t4
+	beq $t4, $t0, For_Valid                     # -> branch to "For_Valid" if val in $t4 == val in $t0
+	bne $t4, 32, TabL                       # -> branch to "TabL" if val in $t4 is not equal to 32
+	j SkipL                                 # -> jump to SkipL
+	
+	TabL:	bne $t4, 9, Loop_Main            # -> branch to "Loop_Main" if val in $t4 not equal to 9
+	SkipL:	addi $t2, $t2, 1                # -> increment $t2 by 1
 
