@@ -105,4 +105,12 @@ sub_b:
 	li $t5, 0                               # -> initialize the vals of $t5, $t3 and $t8 to 0
 	li $t3, 0
 	li $t8, 0
+	
+	lw $t2, ($sp)                           # -> load word on top of the running stack into $t2
+	lw $t9, 4($sp)                          # -> load word in the address 4 bytes (from top to bottom of the running stack) into $t9
+	lb $t0, ($t9)                           # -> load byte from $t9 into $t0
+	addi $sp, $sp, 8                        # -> free up 8 bytes of space used in the running stack
+	
+	LoopLeading:
+	lb $t4, ($t2)                           # -> load byte from $t2 into $t4
 
