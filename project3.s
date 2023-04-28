@@ -31,4 +31,8 @@ sub_a:
 	lw $t1, ($sp)                    # -> load word, the first 4 byte from the sp pointer into $t1
 	addi $sp, $sp, 4                 # -> moves stack pointer back to former address after freeing the reserved space used
 	
+	Loop:
+	li $t7, 0                        # -> set up $t7 with value 0
+	addi $sp, $sp, -8                # -> reserve 8 bytes of storage in the runtime stack
+	sw $t1, ($sp)                    # -> save word in $t1 into the address where the stack pointer is currently at
 
