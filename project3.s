@@ -81,4 +81,11 @@ sub_a:
 	checking_pos:
 	lw $t9, 4($sp)                          # -> load word from the 4th offset from the current stack pointer into $t9
 	addi $sp, $sp, 8                        # -> free up 8 bytes of storage from the running stack
+	lb $t7, ($t9)                           # -> load byte from $t9 into $t7
+	beq $t7, 10, end                        # -> branch to "end" if val in $t7 == 10
+	beq $t7, 0, end                         # -> ...else if val in $t7 == 0
+	beq $t7, 44, next_substr                    # -> Else if val in $t7 == 44, branch to next_substr 
+	
+	next_substr:
+	la $t1, ($t9)                           # -> load address of $t9 into $t1
 
