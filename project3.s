@@ -139,5 +139,12 @@ sub_b:
 		j calculations			              # -> jump to calculate and update $t8
 		
 	lower_case:	bgt $t4, 118, For_Invalid		      # -> check if character in a-v
+		blt $t4, 97, For_Invalid		          # -> print For_Invalid if not a-v
+		li $t3, -87			                  # -> make $t3 -87 for conversion to decimal
+	
+	calculations:
+		add $t3, $t4, $t3		              # -> convert the character to its decimal value
+		add $t8, $t8, $t3		              # -> add that value to $t8 in every iteration
+		mul $t8, $t8, 32		              # -> multiply $t8 with 32 in every iteration
 
 
