@@ -18,4 +18,9 @@ main:
 	li $a1, 1001                     # -> restrict the user's input size to 1000 characters
 	syscall                          # -> invokes the system to execute the input process
 	
+	la $t1, ($a0)                    # -> load the base address of user's input into $t1
+	addi $sp, $sp, -4                # -> reserve 4 bytes of storage in the run time stack
+	sw $t1, ($sp)                    # -> save/push the value of $t1 into the first byte address on top of the running stack
+	jal sub_a                        # ->  jump and link to sub_a, to process the whole input string
+
 
