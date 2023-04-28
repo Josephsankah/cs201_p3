@@ -146,5 +146,13 @@ sub_b:
 		add $t3, $t4, $t3		              # -> convert the character to its decimal value
 		add $t8, $t8, $t3		              # -> add that value to $t8 in every iteration
 		mul $t8, $t8, 32		              # -> multiply $t8 with 32 in every iteration
+	
+	move_to_next:	addi $t2, $t2, 1		          # -> go to the next byte address
+		addi $t5, $t5, 1		              # -> increase input length counter by 1
+		j Loop_Main			                  # -> loop again
+	
+	Loop_Trailing:
+	lb $t4, ($t2)				              # -> loading the subsequent bit to $t4
+	beq $t4, $t0, For_Valid			# -> branch to For_valid if val in $t4 == val in $t0
 
 
