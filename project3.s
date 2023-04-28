@@ -126,4 +126,11 @@ sub_b:
 	bgt $t5, 4, For_Invalid                     # -> branch to "For_Invalid" val in $t5 greater than 4
 	beq $t4, $t0, For_Valid                     # -> branch to "For_Valid" if val in $t4 == val in $t0
 	beq $t4, 32, Loop_Trailing               # -> branch to "Loop_Trailing" if val in $t4 == 32
+	beq $t4, 9, Loop_Trailing                # -> branch to $t4 if val in $t4 == 9
+	
+	number:	bgt $t4, 57, upper_case		
+		blt $t4, 48, For_Invalid		
+		li $t3, -48			                  # -> make $t3 -48 for conversion to decimal
+		j calculations		                  # -> jump to calculate and update $t8
+
 
