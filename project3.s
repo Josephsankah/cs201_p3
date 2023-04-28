@@ -173,6 +173,13 @@ sub_b:
 	sw $t9, 4($sp)                            # -> save word in $t9 into the address of location 4 bytes away from the current stack pointer
 	
 	jr $ra                                    # -> jump to return address
+	
+	For_Invalid:
+	li $t8, -1                                # -> load -1 into $t8
+	sw $t8, ($sp)                             # -> store word from $t8 into the address of the current stack pointer
+	sw $t9, 4($sp)                            # -> store word from $t9 into the address of the 4th byte away from the curr stack pointer
+	jr $ra                                    # -> jump to return address
+
 
 
 
