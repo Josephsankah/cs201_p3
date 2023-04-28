@@ -166,6 +166,14 @@ sub_b:
 	bne $t5, 0, Division                           # -> branch to "Div" if val in $t5 not equal to 0
 	j For_Invalid                                 # -> otherwise jump to "For_Invalid"
 
+	Division:
+	div $t8, $t8, 32                          # -> divide $t8 by 32
+	addi $sp, $sp, -8                         # -> reserve 8 bytes of storage in the run stack 
+	sw $t8, ($sp)                             # -> save word in $t8 into the address of the current stack pointer
+	sw $t9, 4($sp)                            # -> save word in $t9 into the address of location 4 bytes away from the current stack pointer
+	
+	jr $ra                                    # -> jump to return address
+
 
 
 
