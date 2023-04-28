@@ -26,3 +26,9 @@ main:
 Exit:	li $v0, 10                    # -> setup to exit the program
 	syscall                           # -> system call to exit
 
+sub_a:	            
+	la $t6, ($ra)                    # -> load the address of the $ra into $t6               
+	lw $t1, ($sp)                    # -> load word, the first 4 byte from the sp pointer into $t1
+	addi $sp, $sp, 4                 # -> moves stack pointer back to former address after freeing the reserved space used
+	
+
