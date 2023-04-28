@@ -66,4 +66,11 @@ sub_a:
 	
 	li $v0, 4                               # -> set up to print a string char
 	la $a0, opening_char                            # -> load the opening parenthesis char
+	syscall                                 # -> make a system call
+	
+	li $v0, 1                               # -> set up to print an integer
+	addi $a0, $t5, 0                        # -> store val in $t5 into $a0
+	syscall                                 # -> make a system call
+	
+	li $v0, 4                               # -> set up to print a string char
 
