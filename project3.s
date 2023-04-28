@@ -51,4 +51,11 @@ sub_a:
 	
 	lw $t8, ($sp)                           # -> load word from the address of the current stack pointer into $t8
 	beq $t8, -1, print_error_msg            # -> branch to "print_error_msg" if val of $t8 == -1
-
+	j print_val                              # -> jump to print_val
+	
+	print_error_msg:                             
+	li $v0, 4                               # -> setup to print a string char
+	la $a0, error_msg                           # -> load the error_msg string
+	syscall                                 # -> invoke a system call for action
+	j checking_pos                      # -> jump to "checking_pos"
+	
