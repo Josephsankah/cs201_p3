@@ -36,3 +36,10 @@ sub_a:
 	addi $sp, $sp, -8                # -> reserve 8 bytes of storage in the runtime stack
 	sw $t1, ($sp)                    # -> save word in $t1 into the address where the stack pointer is currently at
 
+	LoopSub:
+	lb $t7, ($t1)                           # -> load byte the first byte from $t1 into $t7
+	beq $t7, 44, Send_to_sub_b              # -> branch to "Send_to_sub_b" if value in $t7 == 44
+	beq $t7, 10, Send_to_sub_b              # -> branch to "Send_to_sub_b" if vallue in $t7 == 10
+	beq $t7, 0, Send_to_sub_b               # -> branch to "Send_to_sub_b" if value in $t7 == 0
+	addi $t1, $t1, 1                        # -> otherwise increment $t1 by 1
+
