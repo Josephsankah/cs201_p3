@@ -161,7 +161,11 @@ sub_b:
 	
 	SkipT:	addi $t2, $t2, 1		          # -> go to the next byte address
 		j Loop_Trailing			              # -> loop again
-	
+
+	For_Valid:           
+	bne $t5, 0, Division                           # -> branch to "Div" if val in $t5 not equal to 0
+	j For_Invalid                                 # -> otherwise jump to "For_Invalid"
+
 
 
 
