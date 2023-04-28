@@ -132,5 +132,12 @@ sub_b:
 		blt $t4, 48, For_Invalid		
 		li $t3, -48			                  # -> make $t3 -48 for conversion to decimal
 		j calculations		                  # -> jump to calculate and update $t8
+		
+	upper_case:	bgt $t4, 86, lower_case		          # -> check if character in A-V
+		blt $t4, 65, For_Invalid		          # -> print For_Invalid if not A-v
+		li $t3, -55			                  # -> make $t3 -55 for conversion to decimal
+		j calculations			              # -> jump to calculate and update $t8
+		
+	lower_case:	bgt $t4, 118, For_Invalid		      # -> check if character in a-v
 
 
