@@ -88,4 +88,12 @@ sub_a:
 	
 	next_substr:
 	la $t1, ($t9)                           # -> load address of $t9 into $t1
+	addi $t1, $t1, 1                        # -> increment the val in $t1 by 1
+
+	
+	li $v0, 4                               # -> set up to print a string char
+	la $a0, comma_char                           # -> load the comma string into into $a0
+	syscall                                 # -> make a system call
+	
+	j Loop                                  # -> jump to Loop
 
