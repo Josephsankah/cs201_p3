@@ -59,3 +59,11 @@ sub_a:
 	syscall                                 # -> invoke a system call for action
 	j checking_pos                      # -> jump to "checking_pos"
 	
+	print_val:                               
+	li $v0, 1                               # -> set up to print an integer
+	addi $a0, $t8, 0                        # -> store val in $t8 into $a0
+	syscall                                 # -> invokes the system call to execute
+	
+	li $v0, 4                               # -> set up to print a string char
+	la $a0, opening_char                            # -> load the opening parenthesis char
+
